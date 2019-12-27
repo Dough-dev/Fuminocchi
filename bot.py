@@ -105,4 +105,4 @@ async def play(ctx, url):
     players[server.id] = player
     player.start
 
-client.run('NTEzMjE5NDI5NTU1ODk2MzIy.XgUrDg.e2iBPMaqGWbzvYMzy-kkqW3qHbA')
+client.run('NTEzMjE5NDI5NTU1ODk2MzIy.XgWKtg.YJtIDva3T57lXDkWShuS1l9i3qQ')
