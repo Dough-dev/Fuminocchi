@@ -154,4 +154,8 @@ async def reload(ctx, cog=None):
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 bot.run('NTEzMjE5NDI5NTU1ODk2MzIy.XgeGhA.SMUYzrj2k0RIHjCX-iNe9bhfkIM', reconnect=True)
+=======
+bot.run('token', reconnect=True)
+>>>>>>> 86e58145c394909105af418c207f2d4bafe84e91
