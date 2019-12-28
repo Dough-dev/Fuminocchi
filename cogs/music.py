@@ -1,3 +1,5 @@
+#Code from Takagi-san, shoutout to apex for his help in settingup the bot :)
+
 import math
 import re
 import discord
@@ -33,7 +35,6 @@ class AudioTrack(lavalink.AudioTrack):
             new_track.stream = track['info']['isStream']
             new_track.title = track['info']['title']
             new_track.uri = track['info']['uri']
-            new_track.artwork = track['info'].get('artwork', '')
             new_track.extra = extras or {}
 
             return new_track
@@ -51,7 +52,7 @@ class Music(commands.Cog):
 
         if not hasattr(bot, 'lavalink'):  # This ensures the client isn't overwritten during cog reloads.
             bot.lavalink = lavalink.Client(bot.user.id, 1, None, MusicPlayer)
-            bot.lavalink.add_node('127.0.0.1', 8080, 'youshallnotpass', 'us', 'default-node')  # Host, Port, Password, Region, Name
+            bot.lavalink.add_node('127.0.0.1', 2333, 'youshallnotpass', 'us', 'default-node')  # Host, Port, Password, Region, Name
             bot.add_listener(bot.lavalink.voice_update_handler, 'on_socket_response')
 
         bot.lavalink.add_event_hook(self.track_hook)
@@ -108,7 +109,6 @@ class Music(commands.Cog):
             embed.add_field(name='Uploaded by', value=f'{player.current.author}')
             embed.add_field(name="Duration", value=dur)
             embed.set_footer(text=f"Requested by {requesterName}")
-            embed.set_thumbnail(url=event.track.artwork)
             channel=self.bot.get_channel(player.fetch("channel"))
             np=await channel.send(embed=embed)
             player.store("np", np)
@@ -454,7 +454,6 @@ class Music(commands.Cog):
             embed.add_field(name='Position in queue', value=f'{pos}')
             embed.add_field(name='Time until playing', value=f'{est}')
             embed.set_footer(text=f"Requested by {ctx.author.name}")
-            embed.set_thumbnail(url=f'{track["info"]["artwork"]}')
             player.add(requester=ctx.author.id, track=track)
         await ctx.send(embed=embed)
 
@@ -674,7 +673,6 @@ class Music(commands.Cog):
         embed.add_field(name='Position', value=f'{positiontxt}')
 
         embed.set_footer(text=f"Requested by {requesterName}")
-        embed.set_thumbnail(url=f'{player.current.artwork}')
 
         await ctx.send(embed=embed)
 
