@@ -5,6 +5,8 @@ import json
 import datetime
 import lavalink
 
+startup_extensions = ['cogs.lavalink', 'cogs.logging']
+
 bot = commands.Bot(command_prefix = '+')
 bot.bootTime=datetime.datetime.utcnow()
 bot.now = datetime.datetime.utcnow().day
@@ -24,7 +26,7 @@ async def on_ready():
     print('Ready!')
     print(bot.user.name)
     print(bot.user.id)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game('with Yuiga-kun. +help'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('with Yuiga-kun. - +help'))
     print('Bot is ready.')
 
 @bot.event
@@ -103,7 +105,6 @@ async def unban(ctx, error):
 
 #for filename in os.listdir('./cogs'):
 #    if filename.endswith('.py'):
-<<<<<<< HEAD
 #        bot.load_extension(f'cogs.{filename[:-3]}')
 
 #--------------------------------------------------------------------------------------------------------------------------------
@@ -153,28 +154,4 @@ async def reload(ctx, cog=None):
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-bot.run('NTEzMjE5NDI5NTU1ODk2MzIy.XgWKtg.YJtIDva3T57lXDkWShuS1l9i3qQ', reconnect=True)
-=======
-#        client.load_extension(f'cogs.{filename[:-3]}')
-
-@client.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
-
-@client.command(pass_context=True)
-async def leave(ctx):
-    guild = ctx.message.guild
-    voice_client = guild.voice_client
-    await voice_client.disconnect()
-
-@client.command(pass_context=True)
-async def play(ctx, url):
-    guild = ctx.message.guild
-    voice_client = guild.voice_client
-    player = await voice_client.create_ytdl_player(url)
-    players[server.id] = player
-    player.start
-
-client.run('(insert bot token here)')
->>>>>>> 7ea1cbcbeab233d6dddd3d96e220a675f8d9abdb
+bot.run('token', reconnect=True)
