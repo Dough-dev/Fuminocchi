@@ -203,4 +203,4 @@ async def fumiblush(ctx):
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-bot.run('NjYxNzM0MTEzMjE2Mjk5MDI4.XgvuEQ._rAjbeO9su_QetpIpm9EmVgab50', reconnect=True)
+bot.run('token', reconnect=True)
