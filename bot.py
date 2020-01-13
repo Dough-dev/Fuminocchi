@@ -5,21 +5,44 @@ import json
 import datetime
 import lavalink
 
-startup_extensions = ['cogs.lavalink', 'cogs.logging']
+startup_extensions = ['cogs.lavalink', 'cogs.logging', 'cogs.other', 'cogs.roles', 'cogs.help']
 
 bot = commands.Bot(command_prefix = '+')
+bot.remove_command('help')
 bot.bootTime=datetime.datetime.utcnow()
 bot.now = datetime.datetime.utcnow().day
 with open("config.json", "r") as ff:
     conf=json.load(ff)
-token=conf["token"]
-bot.gapi=conf["google"]
 
 @bot.event
 async def on_ready():
     try:
-        bot.load_extension('cogs.music')
-        print("Loaded music")
+        bot.load_extension('cogs.help')
+        print("Loaded help.")
+    except Exception as e:
+        exc = f'{type(e).__name__}: {e}'
+        print(f'Failed to  load extension {extension}\n{exc}')
+    try:
+        bot.load_extension('cogs.logging')
+        print("Loaded logging.")
+    except Exception as e:
+        exc = f'{type(e).__name__}: {e}'
+        print(f'Failed to  load extension {extension}\n{exc}')
+    try:
+        bot.load_extension('cogs.other')
+        print("Loaded other.")
+    except Exception as e:
+        exc = f'{type(e).__name__}: {e}'
+        print(f'Failed to  load extension {extension}\n{exc}')
+    try:
+        bot.load_extension('cogs.roles')
+        print("Loaded roles.")
+    except Exception as e:
+        exc = f'{type(e).__name__}: {e}'
+        print(f'Failed to  load extension {extension}\n{exc}')
+    try:
+        bot.load_extension('cogs.utility')
+        print("Loaded utility.")
     except Exception as e:
         exc = f'{type(e).__name__}: {e}'
         print(f'Failed to  load extension {extension}\n{exc}')
@@ -31,7 +54,8 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    print(f'Welcome {member} to the r/Furuhshi Discord!')
+    channel = discord.utils.get(member.guild.channels, name='fumihi')
+    await channel.send(f"Welcome {member.mention} to the r/Furuhashi discord server! <:fumihi:666073632354598912> Read the rules in <#650449886180802570> and then hop onto <#648954224628989964> to talk with us! <:sipmino:666073632354598912>")
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -94,18 +118,35 @@ async def unban(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('Please specify the user you would like to unban.')
 
-#cogs, broken atm
-#@bot.command()
-#async def load(ctx, extension):
-#    bot.load_extension(f'cogs.{extension}')
+@bot.command(pass_context=True)
+@commands.has_permissions(manage_channels=True)
+async def mute(ctx, member: discord.Member):
+    if not member:
+      await ctx.send("Who do you want me to mute?")
+      return
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
+    await member.add_roles(role)
+    await ctx.send("Member has been muted!")
 
-#@bot.command()
-#async def unload(ctx, extension):
-#    bot.unload_extension(f'cogs.{extension}')
+@mute.error
+async def mute_error(ctx, error):
+  if isinstance(error, commands.CheckFailure):
+    await ctx.send("You are not allowed to mute!")
 
-#for filename in os.listdir('./cogs'):
-#    if filename.endswith('.py'):
-#        bot.load_extension(f'cogs.{filename[:-3]}')
+@bot.command(pass_context=True)
+@commands.has_permissions(manage_channels=True)
+async def unmute(ctx, member:discord.User=None, reason=None):
+  if not member:
+    await ctx.send("Who needs to be unmuted?")
+    return
+  role = discord.utils.get(ctx.guild.roles, name="Muted")
+  await member.remove_roles(role)
+  await ctx.send("Member has been unmuted!")
+
+@unmute.error
+async def unmute_error(ctx, error):
+  if isinstance(error, commands.CheckFailure):
+    await ctx.send("You are not allowed to unmute!")
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
@@ -154,8 +195,12 @@ async def reload(ctx, cog=None):
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-bot.run('NTEzMjE5NDI5NTU1ODk2MzIy.XgeGhA.SMUYzrj2k0RIHjCX-iNe9bhfkIM', reconnect=True)
-=======
-bot.run('token', reconnect=True)
->>>>>>> 86e58145c394909105af418c207f2d4bafe84e91
+#Fumino Reaction Commands
+
+@bot.command()
+async def fumiblush(ctx):
+    await ctx.send(f'https://cdn.discordapp.com/attachments/460635108815142922/660694868338802708/fumisick.png')
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+bot.run('NjYxNzM0MTEzMjE2Mjk5MDI4.XgvuEQ._rAjbeO9su_QetpIpm9EmVgab50', reconnect=True)
