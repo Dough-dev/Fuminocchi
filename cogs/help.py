@@ -1,4 +1,3 @@
-
 import discord
 import asyncio
 import json
@@ -39,13 +38,13 @@ commands""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""info""":
-            embed=discord.Embed(title="""Info""", description="""This command shows you information about Takagi-san.""", color=63458)
+            embed=discord.Embed(title="""Info""", description="""This command shows you information about Fuminocchi.""", color=63458)
             embed.add_field(name="""Aliases""", value="""info""", inline=False)
             embed.add_field(name="""Usage""", value="""`info`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""serverinfo""":
-            embed=discord.Embed(title="""Serverinfo""", description="""This command gives you useful information about the server.""", color=63458)
+            embed=discord.Embed(title="""Serverinfo""", description="""Gives information about the server.""", color=63458)
             embed.add_field(name="""Aliases""", value="""serverinfo
 guildinfo
 server
@@ -54,14 +53,14 @@ guild""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""userinfo""":
-            embed=discord.Embed(title="""Userinfo""", description="""This command gives you useful information about yourself or another user.""", color=63458)
+            embed=discord.Embed(title="""Userinfo""", description="""Gives you information about you or another user.""", color=63458)
             embed.add_field(name="""Aliases""", value="""userinfo
 user""", inline=False)
             embed.add_field(name="""Usage""", value="""`userinfo [optional name/mention]`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""avatar""":
-            embed=discord.Embed(title="""Help""", description="""This command sends your's or someone else's avatar in the chat.""", color=63458)
+            embed=discord.Embed(title="""Help""", description="""Sends your or someone else's avatar in the chat.""", color=63458)
             embed.add_field(name="""Aliases""", value="""avatar
 profilephoto
 photo""", inline=False)
@@ -69,64 +68,55 @@ photo""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""poll""":
-            embed=discord.Embed(title="""Help""", description="""This command creates a poll and allows users to vote on it.""", color=63458)
+            embed=discord.Embed(title="""Help""", description="""Creates a poll and allows users to vote on it.""", color=63458)
             embed.add_field(name="""Aliases""", value="""poll""", inline=False)
             embed.add_field(name="""Usage""", value="""`poll <'Question in quotes'> <'options' 'separated' 'by' 'a' 'space' 'in' 'quotes'>`
 You can add up to 10 options""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""giveaway""":
-            embed=discord.Embed(title="""Giveaway""", description="""This command will start and automatically draw a giveaway after the given time.""", color=63458)
+            embed=discord.Embed(title="""Giveaway""", description="""Draws giveaway winner after x time.""", color=63458)
             embed.add_field(name="""Aliases""", value="""giveaway""", inline=False)
             embed.add_field(name="""Usage""", value="""`giveaway <required duration in days> <required prize>`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Administrator""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""kick""":
-            embed=discord.Embed(title="""Kick""", description="""This command will kick a member from the server.""", color=63458)
+            embed=discord.Embed(title="""Kick""", description="""Kicks member from the server.""", color=63458)
             embed.add_field(name="""Aliases""", value="""kick""", inline=False)
             embed.add_field(name="""Usage""", value="""`kick <required @member> [optional reason]`
 The reason is not required but will show in the audit log and logging channel (if set)""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Kick members""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""ban""":
-            embed=discord.Embed(title="""Ban""", description="""This command will ban a member from the server.""", color=63458)
+            embed=discord.Embed(title="""Ban""", description="""Bans a member from the server.""", color=63458)
             embed.add_field(name="""Aliases""", value="""ban""", inline=False)
             embed.add_field(name="""Usage""", value="""`ban <required @member> [optional reason]
 The reason is not required but will show in the audit log and logging channel (if set)`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Ban members""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""mute""":
-            embed=discord.Embed(title="""Mute""", description="""This command will mute a member (stopping them from typing, adding reactions or speaking in a voice channel).""", color=63458)
+            embed=discord.Embed(title="""Mute""", description="""Unmutes a member.""", color=63458)
             embed.add_field(name="""Aliases""", value="""mute""", inline=False)
             embed.add_field(name="""Usage""", value="""`mute <@member> [optional reason]`
 The reason is not required but will show in the audit log and logging channel (if set)""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Kick members""", inline=False)
             await ctx.send(embed=embed)
-        elif request.lower()=="""tempmute""":
-            embed=discord.Embed(title="""Temp mute""", description="""This command will temporarily mute a member (stopping them from typing, adding reactions or speaking in a voice channel).""", color=63458)
-            embed.add_field(name="""Aliases""", value="""tempmute
-temp
-tm""", inline=False)
-            embed.add_field(name="""Usage""", value="""`tempmute <@member> <required time e.g. 10m for 10 minutes> [optional reason]`
-The reason is not required but will show in the audit log and logging channel (if set)""", inline=False)
-            embed.add_field(name="""Required permissions""", value="""Kick members""", inline=False)
-            await ctx.send(embed=embed)
         elif request.lower()=="""unmute""":
-            embed=discord.Embed(title="""Unmute""", description="""This command will unmute a member (allow them to type and speak again).""", color=63458)
+            embed=discord.Embed(title="""Unmute""", description="""Unmutes a member.""", color=63458)
             embed.add_field(name="""Aliases""", value="""unmute""", inline=False)
             embed.add_field(name="""Usage""", value="""`unmute <required @member> <optional reason>`
 The reason is not required but will show in the audit log and logging channel (if set)""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Kick members""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""clear""":
-            embed=discord.Embed(title="""Clear""", description="""This command will clear the specified number of messages (excluding the command message).""", color=63458)
+            embed=discord.Embed(title="""Clear""", description="""Clears the specified number of messages.""", color=63458)
             embed.add_field(name="""Aliases""", value="""clear
 purge""", inline=False)
             embed.add_field(name="""Usage""", value="""`clear <required number>`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""Manage messages""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""join""":
-            embed=discord.Embed(title="""Join""", description="""This command allows you to join a role.""", color=63458)
+            embed=discord.Embed(title="""Join""", description="""Allows you to add a role.""", color=63458)
             embed.add_field(name="""Aliases""", value="""join
 role
 joinrole""", inline=False)
@@ -134,21 +124,21 @@ joinrole""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""leave""":
-            embed=discord.Embed(title="""Leave""", description="""This command allows you to leave a role.""", color=63458)
+            embed=discord.Embed(title="""Leave""", description="""Allows you to remove a role.""", color=63458)
             embed.add_field(name="""Aliases""", value="""leave
 leaverole""", inline=False)
             embed.add_field(name="""Usage""", value="""`leave <required role name>`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""roles""":
-            embed=discord.Embed(title="""Roles""", description="""This command will show you all the roles you can join.""", color=63458)
+            embed=discord.Embed(title="""Roles""", description="""Shows you all the roles you can add.""", color=63458)
             embed.add_field(name="""Aliases""", value="""roles
 ranks""", inline=False)
             embed.add_field(name="""Usage""", value="""`roles`""", inline=False)
             embed.add_field(name="""Required permissions""", value="""None""", inline=False)
             await ctx.send(embed=embed)
         elif request.lower()=="""autorole""":
-            embed=discord.Embed(title="""Autorole""", description="""This command shows you this guild's autoroles, and allows you to add and remove them.""", color=63458)
+            embed=discord.Embed(title="""Autorole""", description="""Shows you this guild's autoroles, and allows you to add and remove them.""", color=63458)
             embed.add_field(name="""Aliases""", value="""autorole
 ar""", inline=False)
             embed.add_field(name="""Usage""", value="""`autorole [add/remove <role name>]`
