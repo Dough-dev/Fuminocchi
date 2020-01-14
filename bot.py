@@ -5,8 +5,6 @@ import json
 import datetime
 import lavalink
 
-startup_extensions = ['cogs.lavalink', 'cogs.logging', 'cogs.other', 'cogs.roles', 'cogs.help']
-
 bot = commands.Bot(command_prefix = '+')
 bot.remove_command('help')
 bot.bootTime=datetime.datetime.utcnow()
@@ -69,7 +67,7 @@ async def ping(ctx):
 @bot.command()
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount : int):
-    await ctx.channel.purge(limt=amount)
+    await ctx.channel.purge(limit=amount)
     await ctx.send(f'{amount} messages cleared.')
 
 @clear.error
@@ -203,4 +201,4 @@ async def fumiblush(ctx):
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-bot.run('token', reconnect=True)
+bot.run('NjYxNzM0MTEzMjE2Mjk5MDI4.Xhv1AQ.eowzfSg10LAI9-2xyG4UkQPWvvo', reconnect=True)
